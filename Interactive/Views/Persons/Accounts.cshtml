@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BusinessLayer.DTO.Account>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PersonCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutstandingBalance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PersonCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OutstandingBalance)
+            </td>
+            <td>
+                @Html.ActionLink("Add", "CreateForAccount", "Accounts", new { personCode = item.PersonCode }) |
+                @Html.ActionLink("Details", "AccountDetails", new { id = item.Code }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Code })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
